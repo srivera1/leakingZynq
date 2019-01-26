@@ -1,5 +1,6 @@
 # leakingZynq
-This is a proof of concept about how information can be leaked without any extra HW from an SoC
+This is a proof of concept about how information can be leaked without any extra HW from an SoC.
+<br /> The bin file has been synthetized for the Zynq board Pynq from digilent. The pin with the clk routed is the IO5. Any small piece of wire plugged on that pin will improve the emissivity.
 
 ## FPGA configuration:
 <br />$ echo 0 > /sys/class/fpga_manager/fpga0/flags
