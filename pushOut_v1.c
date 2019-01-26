@@ -129,6 +129,7 @@ int main(int argc, char *argv[])
     int j =0;     /* character index */
     
     writeMemInt(0x41210000, 0x0, 0x1);
+    writeMemInt(0x41200000, 0x0, 0x2);
     while(1==1) { /* while not finished */
 	
 	if(i%9==0){ /* if last bit of char get next char */
@@ -155,6 +156,9 @@ int main(int argc, char *argv[])
         usleep(period-duty);   
 
     }
+	
+    writeMemInt(0x41210000, 0x0, 0x1);
+    writeMemInt(0x41200000, 0x0, 0x2);
 
     printf("finished \n");
     munmap(ptr,page_size);
