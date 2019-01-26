@@ -10,6 +10,6 @@ This is a proof of concept about how information can be leaked without any extra
 ## code compilation and execution
 <br />$ cd ~/leakingZynq
 <br />$ gcc -Wall -O3 -o pushOut pushOut_v1.c
-<br />$ sudo ./pushOut
+<br />$ sudo ./pushOut myString
 <br />
 <br /> for more info check the file pushOut_v1.c 
