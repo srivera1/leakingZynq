@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 
     union charToint {
 	    char c;
-	    int i;
+	    unsigned i;
     };
 
     printf("We are sending the string \"%s\" with clk gating to the air!\n", argv[1]);
@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
     writeMemInt(0x41200000, 0x0, 0x2);
     while(1==1) { /* while not finished */
 	
-	if(i%9==0){ /* if last bit of char get next char */
+	if(i%8==0){ /* if last bit of char get next char */
 		j++;
 		i=0;
 		a.c=argv[1][j%strlen(argv[1])];
