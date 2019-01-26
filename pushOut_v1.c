@@ -7,20 +7,42 @@
  * 
  * 
  * this program configures the clk
- * (or clk gating) path routing on
+ * path routing (or clk gating) on
  * the PL side from a Zynq chip.
  * this is a proof of concept about 
  * how information can be leaked
- * without any extra HW from an SoC
+ * without any extra HW from an SoC.
  *
+ * the clk signal will generally no be
+ * usable, (or any other digital signal)
+ * since the analog bandwidth
+ * of the MOSFET is not good enough.
+ * but still, useful for us.
+ * 
  * on the receiver side we use a
  * logarithmic detector (MAX2015)
  * as ASK detector (OOK in this
- * example)sampled by an arduino mini
- *
+ * example) sampled by an arduino mini
  *
  * the digital HW includes an fsk
  * example too (easily adaptable to psk)
+ *
+ * Registers:
+ * 0x41210000
+ *  0x2 -> fsk random noise, 200M, WB 5MHz
+ *  0x0 -> peak 200MHz
+ *  0x3 -> peak 180MHz
+ *  0x1 -> off 
+ * 
+ * 0x41200000
+ * -0x1 -> peak 190MHz
+ *  0x0 -> peak 180MHz
+ *  0x1 -> peak 200MHz
+ *  0x2 -> peak 210MHz
+ *  0x3 -> peak 220MHz
+ * 
+ * 
+ * gcc -Wall -O3 -o pushOut pushOut_v1.c
  *
  */
 
@@ -105,7 +127,8 @@ int main(int argc, char *argv[])
     int period = 50000; /* slow just for easy visualization */
     int i =0;     /* bit index */
     int j =0;     /* character index */
-
+    
+    writeMemInt(0x41210000, 0x0, 0x1);
     while(1==1) { /* while not finished */
 	
 	if(i%9==0){ /* if last bit of char get next char */
