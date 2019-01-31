@@ -14,3 +14,6 @@ This is a proof of concept about how information can be leaked without any extra
 <br />$ sudo ./pushOut myString
 <br />
 <br /> for more info check the file pushOut_v1.c 
+<br /> 
+<br /> 
+<br /> uart_parse_v4.c is used to demodulate the OOK signal from the arduino+MAX2015 receiver (via uart port)
